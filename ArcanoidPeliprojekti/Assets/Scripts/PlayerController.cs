@@ -39,8 +39,8 @@ public class PlayerController : MonoBehaviour
 
     public void ResetBall()
     {
-        ball Ball = Instantiate(ballPrefab).GetComponent<ball>();
-        Ball.transform.parent = transform;
-        Ball.transform.position = transform.position + balloffset;
+        ball ball = Instantiate(ballPrefab).GetComponent<ball>();
+        ball.transform.parent = transform;
+        ball.transform.position = transform.position + balloffset;
     }
 }
