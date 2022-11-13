@@ -6,6 +6,7 @@ public class Heath : MonoBehaviour
 {
 
     [SerializeField] int health = 1;
+    [SerializeField] int scoreValue = 10;
 
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -15,6 +16,7 @@ public class Heath : MonoBehaviour
             health--;
             if(health <= 0)
             {
+                FindObjectOfType<GameSession>().increaseScore(scoreValue);
                 Destroy(gameObject);
             }
         }
