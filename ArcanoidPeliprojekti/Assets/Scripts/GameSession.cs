@@ -16,31 +16,38 @@ public class GameSession : MonoBehaviour
 
     [SerializeField] GameObject blackScreen;
     [SerializeField] GameObject gameOverText;
+    [SerializeField] GameObject gameWinText;
     [SerializeField] GameObject restartButton;
 
     int currentLives;
     int currentScore;
     int currentHighScore;
+    bool uiCheck=false;
     // Start is called before the first frame update
 
     private void Awake()
     {
+        
+
         int instanceCount = FindObjectsOfType<GameSession>().Length;
-        if(instanceCount > 1)
+        if (instanceCount > 1)
         {
             Destroy(gameObject);
-
         }
         else
         {
             DontDestroyOnLoad(gameObject);
         }
+       
+
     }
     void Start()
     {
+      
         currentLives = startLives;
 
         restartButton.GetComponent<Button>().onClick.AddListener(Reset);
+
         currentHighScore = PlayerPrefs.GetInt("highscore");
         
     }
@@ -48,33 +55,51 @@ public class GameSession : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        CountBalls();
+
+        CountBlocks();
+
+        UpdateUI();
+
+        if (uiCheck)
+        {
+            ResetScreen();
+            uiCheck = false;
+        }
+        
+        
+    }
+
+    private void CountBalls()
+    {
         var Balls = GameObject.FindGameObjectsWithTag("Ball");
         if (Balls.Length == 0)
         {
             DecreaseLives();
             GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>().ResetBall();
 
-        
         }
+    }
 
+    private void CountBlocks()
+    {
         var blocks = GameObject.FindGameObjectsWithTag("Block");
-
 
         if (blocks.Length == 0)
         {
             //Do winning stuff
 
             win();
-
         }
-        
-        
+    }
+
+    private void UpdateUI()
+    {
         livesText.text = currentLives.ToString();
         scoreText.text = currentScore.ToString();
         highScoreText.text = currentHighScore.ToString();
-
-
     }
+
     public void increaseScore(int value)
     {
         currentScore += value;
@@ -96,7 +121,12 @@ public class GameSession : MonoBehaviour
         if(currentBuildIndex == numberOfScenes -1)
         {
             //Declare winner
-            Time.timeScale = 0f;
+            blackScreen.SetActive(true);
+            gameWinText.SetActive(true);
+            restartButton.SetActive(true);
+            SetHighScore();
+            Pause();
+       
         }
         else
         {
@@ -110,22 +140,29 @@ public class GameSession : MonoBehaviour
         blackScreen.SetActive(true);
         gameOverText.SetActive(true);
         restartButton.SetActive(true);
-        Time.timeScale = 0f;
+        SetHighScore();
+        Pause();
     }
 
     
     private void Reset()
     {
-        ResetScore();
+      
         ResetScreen();
+        ResetScore();
         ResetLevel1();
+        uiCheck = true;
     }
     private void ResetScreen()
     {
+
+        UnPause();
         blackScreen.SetActive(false);
         gameOverText.SetActive(false);
         restartButton.SetActive(false);
-        Time.timeScale = 1f;
+        gameWinText.SetActive(false);
+        
+        
     }
 
     private void ResetScore()
@@ -135,6 +172,24 @@ public class GameSession : MonoBehaviour
     }
     private void ResetLevel1()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        SceneManager.LoadScene(0);
+    }
+    private void SetHighScore()
+    {
+        if (currentScore > currentHighScore)
+        {
+            currentHighScore = currentScore;
+            PlayerPrefs.SetInt("highscore",currentHighScore);
+        }
+    }
+    private void Pause()
+    {
+        Time.timeScale = 0f;
+    }
+    private void UnPause()
+    {
+        Time.timeScale = 1f;
+        
+        
     }
 }

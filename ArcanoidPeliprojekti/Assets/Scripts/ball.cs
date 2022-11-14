@@ -7,10 +7,12 @@ public class ball : MonoBehaviour
     [SerializeField] float speed = 15f;
 
     Rigidbody2D rb2D;
+    AudioSource audiosource;
 
     private void Awake()
     {
         rb2D = GetComponent<Rigidbody2D>();
+        audiosource = GetComponent<AudioSource>();
     }
     private void Update()
     {
@@ -30,5 +32,9 @@ public class ball : MonoBehaviour
         transform.parent = parent;
         rb2D.simulated = false;
         rb2D.velocity = Vector2.zero;
+    }
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        audiosource.Play();
     }
 }
