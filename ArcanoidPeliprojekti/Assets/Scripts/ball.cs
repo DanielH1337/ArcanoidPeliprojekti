@@ -5,6 +5,9 @@ using UnityEngine;
 public class ball : MonoBehaviour
 {
     [SerializeField] float speed = 15f;
+    [SerializeField] float accelaration = 1.0f;
+ 
+    private float  tempSpeed = 0.0f;
 
     Rigidbody2D rb2D;
     AudioSource audiosource;
@@ -14,16 +17,31 @@ public class ball : MonoBehaviour
         rb2D = GetComponent<Rigidbody2D>();
         audiosource = GetComponent<AudioSource>();
     }
+    private void Start()
+    {
+        tempSpeed = speed;
+    }
     private void Update()
     {
-        rb2D.velocity = rb2D.velocity.normalized * speed;
+        rb2D.velocity = rb2D.velocity.normalized * tempSpeed;
+        
+        
+
+    }
+    private IEnumerator IncreaseBallSpeed()
+    {
+        while (tempSpeed < 30)
+        {
+            tempSpeed += accelaration;
+            yield return new WaitForSeconds(1);
+        }
     }
 
     public void Launch(Vector2 direction)
     {
         transform.parent = null;
         rb2D.simulated = true;
-
+        StartCoroutine(IncreaseBallSpeed());
         rb2D.velocity = direction.normalized * speed;
     }
 
