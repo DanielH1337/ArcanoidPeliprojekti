@@ -30,7 +30,7 @@ Transform:
   m_GameObject: {fileID: 6859004651230563654}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 1, y: -6, z: 0}
-  m_LocalScale: {x: 0.012499999, y: 0.049999997, z: 1}
+  m_LocalScale: {x: 0.008169377, y: 0.08702514, z: 0.63761}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -137,7 +137,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d27fa821128fe1a46a3bc93315f9c8d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 20
+  speed: 13
+  accelaration: 0.5
 --- !u!82 &8997348004847152572
 AudioSource:
   m_ObjectHideFlags: 0

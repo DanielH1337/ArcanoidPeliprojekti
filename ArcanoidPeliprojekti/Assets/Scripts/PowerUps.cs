@@ -13,7 +13,7 @@ public class PowerUps : MonoBehaviour
         if (collision.gameObject.tag == "Ball")
         {
 
-            FindObjectOfType<GameSession>().increasePaddleLenght();
+            FindObjectOfType<playerPowerup>().increasePaddleLenght();
 
 
         }

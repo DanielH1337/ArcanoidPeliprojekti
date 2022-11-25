@@ -20,59 +20,35 @@ public class GameSession : MonoBehaviour
     [SerializeField] GameObject gameOverText;
     [SerializeField] GameObject gameWinText;
     [SerializeField] GameObject restartButton;
-    [SerializeField] int powerUpTime;
-    [SerializeField] GameObject paddle;
+    public GameObject pausePanel;
+
     
-    
-    int time = 0;
     int currentLives;
     int currentScore;
     int currentHighScore;
     bool uiCheck=false;
-
-    private Vector3 scaleChange;
-    
-    [SerializeField] AudioSource powerupSound;
-
-    public int growSize;
-    public float shrinkSize;
-    
-
 
 
     
     private void Awake()
     {
 
-
-        
-
         int instanceCount = FindObjectsOfType<GameSession>().Length;
         if (instanceCount > 1)
         {
             Destroy(gameObject);
+           
         }
         else
         {
             DontDestroyOnLoad(gameObject);
+           
         }
        
-
     }
     void Start()
     {
         
-       
-        if (powerupSound != null)
-        {
-            powerupSound.GetComponent<AudioSource>();
-        }
-        
-        if (paddle != null)
-        {
-            paddle.GetComponent<Transform>();
-        }
-            
 
         currentLives = startLives;
 
@@ -96,12 +72,26 @@ public class GameSession : MonoBehaviour
             ResetScreen();
             uiCheck = false;
         }
+        if (Time.timeScale == 1 && Input.GetKeyDown(KeyCode.Escape))
+        {
+            pausePanel.SetActive(true);
+            pauseMenu();
+        }
+        else if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            resumeGame();
+            pausePanel.SetActive(false);
+        }
+    
 
-  
-
-
-
-
+    }
+    private void resumeGame()
+    {
+        UnPause();
+    }
+    private void pauseMenu()
+    {
+        Pause();
     }
 
     private void CountBalls()
@@ -158,10 +148,9 @@ public class GameSession : MonoBehaviour
             blackScreen.SetActive(true);
             gameWinText.SetActive(true);
             restartButton.SetActive(true);
-            powerupSound.Stop();
+            
             SetHighScore();
             Pause();
-       
         }
         else
         {
@@ -175,7 +164,6 @@ public class GameSession : MonoBehaviour
         blackScreen.SetActive(true);
         gameOverText.SetActive(true);
         restartButton.SetActive(true);
-        powerupSound.Stop();
         SetHighScore();
         Pause();
     }
@@ -228,79 +216,7 @@ public class GameSession : MonoBehaviour
         
         
     }
-    public void increasePaddleLenght()
-    {
-        if (time == powerUpTime)
-        {
-            powerupSound.Play();
-            Debug.Log("Testi");
-            time = 0;
-            StartCoroutine(slowDecrease());
-            
-        }
-        else
-        {
-            powerupSound.Play();
-            StartCoroutine(slowIncrease());
-            StartCoroutine(PowerUpTimer());
-        }
 
-    }
-    private IEnumerator PowerUpTimer()
-    {
-        while(time < powerUpTime)
-        {
-            time += 1;
-            Debug.Log(time);
-            yield return new WaitForSeconds(1);
-        }
-        print("moi");
-        increasePaddleLenght();
-        
-    }
-    private IEnumerator slowIncrease()
-    {
-        scaleChange = new Vector3(1f, 0.0f, 0.0f);
-
-        while (true)
-        {
-            if(growSize > paddle.transform.localScale.x)
-            {
-                paddle.transform.localScale += scaleChange;
-            }
-            if(growSize == paddle.transform.localScale.x)
-            {
-                powerupSound.Stop();
-            }
-            yield return new WaitForSeconds(0.0001f);
-        }
-       
-        
-    }
-    private IEnumerator slowDecrease()
-    {
-
-        scaleChange = new Vector3(-1f, 0.0f, 0.0f);
-
-        while (shrinkSize+1 < paddle.transform.localScale.x)
-        {
-          
-            paddle.transform.localScale += scaleChange;
-            Debug.Log(paddle.transform.localScale.x);
-            if(paddle.transform.localScale.x == shrinkSize+1)
-            {
-                scaleChange = new Vector3(0.0f, 0.0f, 0.0f);
-                powerupSound.Stop();
-            }
-          
-            yield return new WaitForSeconds(0.0001f);
-
-        }
-           
-        
-
-
-
-    }
+   
    
 }

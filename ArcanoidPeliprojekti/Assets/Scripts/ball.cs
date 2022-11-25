@@ -25,8 +25,6 @@ public class ball : MonoBehaviour
     {
         rb2D.velocity = rb2D.velocity.normalized * tempSpeed;
         
-        
-
     }
     private IEnumerator IncreaseBallSpeed()
     {
@@ -39,6 +37,7 @@ public class ball : MonoBehaviour
 
     public void Launch(Vector2 direction)
     {
+        tempSpeed = speed;
         transform.parent = null;
         rb2D.simulated = true;
         StartCoroutine(IncreaseBallSpeed());
@@ -53,6 +52,13 @@ public class ball : MonoBehaviour
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        audiosource.Play();
+        if (audiosource != null)
+        {
+            audiosource.Play();
+        }
+        if (collision.gameObject.name == "powerUpScale")
+        {
+            FindObjectOfType<playerPowerup>().increasePaddleLenght();
+        }
     }
 }

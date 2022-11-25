@@ -184,15 +184,16 @@ MonoBehaviour:
   livesText: {fileID: 3699023097860664956}
   scoreText: {fileID: 3699023098463353950}
   highScoreText: {fileID: 3699023096775470604}
-  startLives: 1
+  startLives: 2
   blackScreen: {fileID: 3699023097499062674}
   gameOverText: {fileID: 3699023097999059266}
   gameWinText: {fileID: 2857628348984318252}
   restartButton: {fileID: 3699023096807332823}
-  paddle: {fileID: 0}
+  powerUpTime: 3
+  paddle: {fileID: 1642450890353016012, guid: f50ca69ef1edb7c4695bec38c37f2ee4, type: 3}
   powerupSound: {fileID: 1740235773}
-  paddleXScale: 400
   growSize: 700
+  shrinkSize: 400
 --- !u!82 &1740235773
 AudioSource:
   m_ObjectHideFlags: 0
@@ -202,7 +203,7 @@ AudioSource:
   m_GameObject: {fileID: 7428976427424596665}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 24300002, guid: 049f8ff3e8d334c449a4ce6f151e4fd9, type: 2}
   m_audioClip: {fileID: 8300000, guid: ae32203bfb640b5489f91fcd525519b9, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1

@@ -19,6 +19,7 @@ public class PlayerController : MonoBehaviour
     {
         ball Ball = GetComponentInChildren<ball>();
         balloffset = Ball.transform.position - transform.position;
+        
     }
 
     // Update is called once per frame
@@ -31,10 +32,7 @@ public class PlayerController : MonoBehaviour
             ball ball = GetComponentInChildren<ball>();
             ball.Launch(launchdir);
         }
-        if (Input.GetButtonDown("Fire1"))
-        {
-            ResetBall();
-        }
+       
     }
 
     public void ResetBall()
@@ -42,5 +40,6 @@ public class PlayerController : MonoBehaviour
         ball ball = Instantiate(ballPrefab).GetComponent<ball>();
         ball.transform.parent = transform;
         ball.transform.position = transform.position + balloffset;
+        ball.transform.localScale = new Vector3(0.008169377f, 0.08702514f, 0.63761f);
     }
 }
