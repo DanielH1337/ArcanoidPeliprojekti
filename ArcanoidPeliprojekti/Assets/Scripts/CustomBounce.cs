@@ -19,11 +19,11 @@ public class CustomBounce : MonoBehaviour
         //Find the relative point. (Ball.x - Paddle.x) / Paddle.widht
         if (collision.gameObject.tag == "Ball")
         {
-            float relativePosition = (collision.transform.position.x - transform.position.x) / bc2D.bounds.size.x;
+            float relativePosition = GetRelativePosition(collision.transform);
 
 
             //Change the velocity of the ball depending on the relative point.
-            collision.rigidbody.velocity = new Vector2(relativePosition,1).normalized * collision.rigidbody.velocity.magnitude;
+            collision.rigidbody.velocity = new Vector2(relativePosition, 1).normalized * collision.rigidbody.velocity.magnitude;
         }
 
 
@@ -31,4 +31,8 @@ public class CustomBounce : MonoBehaviour
 
     }
 
+    public float GetRelativePosition(Transform collision)
+    {
+        return (collision.transform.position.x - transform.position.x) / bc2D.bounds.size.x;
+    }
 }

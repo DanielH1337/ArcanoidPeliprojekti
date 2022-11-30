@@ -58,7 +58,14 @@ public class ball : MonoBehaviour
         }
         if (collision.gameObject.name == "powerUpScale")
         {
-            FindObjectOfType<playerPowerup>().increasePaddleLenght();
+
+            var blocks = GameObject.FindGameObjectsWithTag("Block");
+
+            if (blocks.Length > 1)
+            {
+                FindObjectOfType<ScaleLerper>().StartFunction();
+            }
+            
         }
     }
 }

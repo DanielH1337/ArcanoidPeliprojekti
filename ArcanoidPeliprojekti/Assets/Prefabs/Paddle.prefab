@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 2046567372224520426}
   - component: {fileID: 7384172920770026543}
   - component: {fileID: 4453432675538488469}
-  - component: {fileID: 4453432675538488470}
+  - component: {fileID: 1089658342}
   m_Layer: 0
   m_Name: Paddle
   m_TagString: Player
@@ -261,22 +261,24 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &4453432675538488470
+--- !u!114 &1089658342
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4453432674376011203}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bcbb182ab96adb14685bc58499760a0e, type: 3}
+  m_Script: {fileID: 11500000, guid: b2de9ec3eb63d4e42ae885820240612c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  powerupSound: {fileID: 4453432675538488469}
-  powerUpTime: 5
-  growSize: 702
-  shrinkSize: 400
+  audio: {fileID: 4453432675538488469}
+  repeateble: 1
+  maxScale: {x: 700, y: 37, z: 0.8}
+  speed: 3
+  duration: 1
+  time: 4
 --- !u!1001 &1641780912
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -302,11 +304,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6859004651230563650, guid: 12d53bc50b744ea4bba103b2d408dc3f, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.00004
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6859004651230563650, guid: 12d53bc50b744ea4bba103b2d408dc3f, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.012567572
+      value: 0.016
       objectReference: {fileID: 0}
     - target: {fileID: 6859004651230563650, guid: 12d53bc50b744ea4bba103b2d408dc3f, type: 3}
       propertyPath: m_LocalPosition.z

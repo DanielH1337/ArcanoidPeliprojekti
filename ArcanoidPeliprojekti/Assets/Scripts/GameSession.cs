@@ -72,27 +72,26 @@ public class GameSession : MonoBehaviour
             ResetScreen();
             uiCheck = false;
         }
+        PauseMenu();
+
+    }
+
+    private void PauseMenu()
+    {
         if (Time.timeScale == 1 && Input.GetKeyDown(KeyCode.Escape))
         {
             pausePanel.SetActive(true);
-            pauseMenu();
+            Pause();
         }
         else if (Input.GetKeyDown(KeyCode.Escape))
         {
-            resumeGame();
+            UnPause();
             pausePanel.SetActive(false);
         }
-    
+    }
 
-    }
-    private void resumeGame()
-    {
-        UnPause();
-    }
-    private void pauseMenu()
-    {
-        Pause();
-    }
+   
+    
 
     private void CountBalls()
     {
