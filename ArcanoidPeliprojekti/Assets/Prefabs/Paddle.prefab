@@ -163,7 +163,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 30
-  launchdir: {x: 1, y: 4}
   ballPrefab: {fileID: 6859004651230563654, guid: 12d53bc50b744ea4bba103b2d408dc3f, type: 3}
 --- !u!82 &4453432675538488469
 AudioSource:
@@ -292,15 +291,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6859004651230563650, guid: 12d53bc50b744ea4bba103b2d408dc3f, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.008169377
+      value: 0.006436407
       objectReference: {fileID: 0}
     - target: {fileID: 6859004651230563650, guid: 12d53bc50b744ea4bba103b2d408dc3f, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.08702514
+      value: 0.0685645
       objectReference: {fileID: 0}
     - target: {fileID: 6859004651230563650, guid: 12d53bc50b744ea4bba103b2d408dc3f, type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.63761
+      value: 0.5023538
       objectReference: {fileID: 0}
     - target: {fileID: 6859004651230563650, guid: 12d53bc50b744ea4bba103b2d408dc3f, type: 3}
       propertyPath: m_LocalPosition.x
@@ -308,7 +307,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6859004651230563650, guid: 12d53bc50b744ea4bba103b2d408dc3f, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.016
+      value: 0.01174
       objectReference: {fileID: 0}
     - target: {fileID: 6859004651230563650, guid: 12d53bc50b744ea4bba103b2d408dc3f, type: 3}
       propertyPath: m_LocalPosition.z

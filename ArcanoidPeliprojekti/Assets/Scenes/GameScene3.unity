@@ -937,7 +937,7 @@ MonoBehaviour:
   livesText: {fileID: 3699023097939062912}
   scoreText: {fileID: 3699023098544333474}
   highScoreText: {fileID: 3699023096857506032}
-  startLives: 2
+  startLives: 10
   blackScreen: {fileID: 3699023097342054254}
   gameOverText: {fileID: 3699023097918044094}
   gameWinText: {fileID: 2857628349132933072}

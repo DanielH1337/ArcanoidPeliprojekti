@@ -10,6 +10,7 @@ public class PlayerController : MonoBehaviour
     Rigidbody2D rb2D;
     CustomBounce customBounce;
     Vector3 balloffset;
+    Vector3 random;
     private void Awake()
     {
         rb2D = GetComponent<Rigidbody2D>();
@@ -22,6 +23,7 @@ public class PlayerController : MonoBehaviour
         balloffset = Ball.transform.position - transform.position;
         Debug.Log(Ball.transform.position+","+transform.position);
         Debug.Log(balloffset);
+        
         
     }
 
@@ -42,10 +44,11 @@ public class PlayerController : MonoBehaviour
 
     public void ResetBall()
     {
+        random = new Vector3(Random.Range(-1.0f, 1.0f), 0f, 0f);
         ball ball = Instantiate(ballPrefab).GetComponent<ball>();
         ball.transform.parent = transform;
-        ball.transform.position = transform.position + balloffset;
-        ball.transform.localScale = new Vector3(0.008169377f, 0.08702514f, 0.63761f);
+        ball.transform.position = transform.position +(balloffset+random);
+        ball.transform.localScale = new Vector3(0.006436407f, 0.0685645f, 0.5023538f);
         FindObjectOfType<ScaleLerper>().StopAllCoroutines();
         gameObject.transform.localScale = new Vector3(400f, 37f, 0.8f);
     }
