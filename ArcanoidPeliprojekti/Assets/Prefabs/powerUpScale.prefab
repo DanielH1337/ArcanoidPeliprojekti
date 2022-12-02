@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 165358748333020263}
   - component: {fileID: 165358748333020261}
   - component: {fileID: -7589004894158800028}
-  - component: {fileID: -6633812668649075975}
   m_Layer: 0
   m_Name: powerUpScale
   m_TagString: Block
@@ -127,17 +126,3 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 1
   scoreValue: 10
---- !u!114 &-6633812668649075975
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 165358748333020262}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d1c35c5341fa77f4ab1ff055c09b866e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  paddle: {fileID: 0}
-  paddleXScale: 500

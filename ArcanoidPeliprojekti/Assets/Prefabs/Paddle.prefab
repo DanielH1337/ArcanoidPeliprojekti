@@ -277,7 +277,7 @@ MonoBehaviour:
   maxScale: {x: 700, y: 37, z: 0.8}
   speed: 3
   duration: 1
-  time: 4
+  time: 10
 --- !u!1001 &1641780912
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -340,6 +340,18 @@ PrefabInstance:
     - target: {fileID: 6859004651230563650, guid: 12d53bc50b744ea4bba103b2d408dc3f, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6859004651230563651, guid: 12d53bc50b744ea4bba103b2d408dc3f, type: 3}
+      propertyPath: m_Color.b
+      value: 0.08170167
+      objectReference: {fileID: 0}
+    - target: {fileID: 6859004651230563651, guid: 12d53bc50b744ea4bba103b2d408dc3f, type: 3}
+      propertyPath: m_Color.g
+      value: 0.12546636
+      objectReference: {fileID: 0}
+    - target: {fileID: 6859004651230563651, guid: 12d53bc50b744ea4bba103b2d408dc3f, type: 3}
+      propertyPath: m_Color.r
+      value: 0.6415094
       objectReference: {fileID: 0}
     - target: {fileID: 6859004651230563654, guid: 12d53bc50b744ea4bba103b2d408dc3f, type: 3}
       propertyPath: m_Name

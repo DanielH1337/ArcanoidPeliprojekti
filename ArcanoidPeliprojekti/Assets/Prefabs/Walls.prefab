@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 8007452572794728355}
   - component: {fileID: 8007452572794728357}
   - component: {fileID: 8007452572794728354}
+  - component: {fileID: 675601053}
   m_Layer: 0
   m_Name: Bottomwall
   m_TagString: Untagged
@@ -111,6 +112,18 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.01, y: 0.01}
   m_EdgeRadius: 0
+--- !u!114 &675601053
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8007452572794728352}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 307615c3a6d6be94d9a25bf91720f9c3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8007452572931141831
 GameObject:
   m_ObjectHideFlags: 0

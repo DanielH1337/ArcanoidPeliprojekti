@@ -9,7 +9,7 @@ using UnityEngine.SceneManagement;
 public class GameSession : MonoBehaviour
 {
 
-    
+    public Animator transition;
 
     [SerializeField] TMP_Text livesText;
     [SerializeField] TMP_Text scoreText;
@@ -20,42 +20,35 @@ public class GameSession : MonoBehaviour
     [SerializeField] GameObject gameOverText;
     [SerializeField] GameObject gameWinText;
     [SerializeField] GameObject restartButton;
+ 
     public GameObject pausePanel;
 
-    
+    public float transitionTime=1f;
+
+
+
+   
     int currentLives;
     int currentScore;
     int currentHighScore;
     bool uiCheck=false;
 
-
+    public static GameSession instance = null;
     
-    private void Awake()
-    {
-
-        int instanceCount = FindObjectsOfType<GameSession>().Length;
-        if (instanceCount > 1)
-        {
-            Destroy(gameObject);
-           
-        }
-        else
-        {
-            DontDestroyOnLoad(gameObject);
-           
-        }
-       
-    }
+   
     void Start()
     {
-        
-
+        if (instance == null)
+            instance = this;
+        else if (instance != this)
+            Destroy(gameObject);
+        UnPause();
         currentLives = startLives;
 
         restartButton.GetComponent<Button>().onClick.AddListener(Reset);
-
+      
         currentHighScore = PlayerPrefs.GetInt("highscore");
-        
+       
     }
 
     // Update is called once per frame
@@ -154,12 +147,21 @@ public class GameSession : MonoBehaviour
         else
         {
             //Load Next Scene
-            SceneManager.LoadScene(currentBuildIndex + 1);
+            Pause();
+            StartCoroutine(levelChange(transitionTime));
         }
     }
+    IEnumerator levelChange(float transitionTime)
+    {
+        transition.SetTrigger("Start");
+        yield return new WaitForSecondsRealtime(transitionTime);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex+1);
+    }
+   
 
     private void GameOver()
     {
+
         blackScreen.SetActive(true);
         gameOverText.SetActive(true);
         restartButton.SetActive(true);
