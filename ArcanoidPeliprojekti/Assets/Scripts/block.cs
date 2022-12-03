@@ -3,11 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Heath : MonoBehaviour
+public class block : MonoBehaviour
 {
 
     [SerializeField] int health = 1;
     [SerializeField] int scoreValue = 10;
+   
 
 
     private void OnCollisionEnter2D(Collision2D collision)

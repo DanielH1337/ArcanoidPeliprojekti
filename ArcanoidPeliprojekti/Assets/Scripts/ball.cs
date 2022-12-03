@@ -24,6 +24,7 @@ public class ball : MonoBehaviour
     private void Update()
     {
         rb2D.velocity = rb2D.velocity.normalized * tempSpeed;
+       
         
     }
     private IEnumerator IncreaseBallSpeed()

@@ -23,17 +23,19 @@ public class GameSession : MonoBehaviour
     [SerializeField] GameObject gameOverText;
     [SerializeField] GameObject gameWinText;
     [SerializeField] GameObject restartButton;
+
+    public GameObject player;
+    public GameObject ball;
+
+    public GameObject[] blocks;
  
     public GameObject pausePanel;
 
     public float transitionTime=1f;
-
-
-
-   
-    int currentLives;
-    int currentScore;
-    int currentHighScore;
+    private int levelIndex;
+    private int currentLives;
+    private int currentScore;
+    private int currentHighScore;
     bool uiCheck=false;
 
     public static GameSession instance = null;
@@ -96,6 +98,7 @@ public class GameSession : MonoBehaviour
         {
             DecreaseLives();
             GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>().ResetBall();
+            ball = GameObject.FindGameObjectWithTag("Ball");
 
         }
     }
@@ -196,7 +199,7 @@ public class GameSession : MonoBehaviour
         currentLives = startLives;
         currentScore = 0;
     }
-    private void ResetLevel1()
+    public void ResetLevel1()
     {
         SceneManager.LoadScene(0);
     }
@@ -216,24 +219,69 @@ public class GameSession : MonoBehaviour
     {
         Time.timeScale = 1f;
     }
+    public void Save()
+    {
+        BinaryFormatter bf = new BinaryFormatter();
+        FileStream file = File.Create(Application.persistentDataPath + "/playerInfo.dat");
+        PlayerData data = new PlayerData();
+        data.health = currentLives;
+        data.score = currentScore;
+        data.level = SceneManager.GetActiveScene().buildIndex;
+
+        data.ballvelocity[0] = ball.GetComponent<Rigidbody2D>().velocity.x;
+        data.ballvelocity[1] = ball.GetComponent<Rigidbody2D>().velocity.y;
+
+        data.playerPos[0] = player.transform.position.x;
+        data.playerPos[1] = player.transform.position.y;
+        data.playerPos[2] = player.transform.position.z;
+
+        data.ballPos[0] = ball.transform.position.x;
+        data.ballPos[1] = ball.transform.position.y;
+        data.ballPos[2] = ball.transform.position.y;
+        bf.Serialize(file, data);
+        file.Close();
+
+    }
+    public void Load()
+    {
+        if (File.Exists(Application.persistentDataPath + "/playerInfo.dat"))
+        {
+            BinaryFormatter bf = new BinaryFormatter();
+            FileStream file = File.Open(Application.persistentDataPath + "/playerInfo.dat", FileMode.Open);
+            PlayerData data = (PlayerData)bf.Deserialize(file);
+            file.Close();
+            levelIndex = data.level;
+            currentLives = data.health;
+            currentScore = data.score;
+            Vector3 playerPosition;
+            playerPosition.x = data.playerPos[0];
+            playerPosition.y = data.playerPos[1];
+            playerPosition.z = data.playerPos[2];
+            player.transform.position = playerPosition;
+            Vector3 ballPosition;
+            ballPosition.x = data.ballPos[0];
+            ballPosition.y = data.ballPos[1];
+            ballPosition.z = data.ballPos[2];
+            ball.transform.position = ballPosition;
+            Vector2 ballvelocity;
+            ballvelocity.x = data.ballvelocity[0];
+            ballvelocity.y = data.ballvelocity[1];
+            ball.GetComponent<Rigidbody2D>().velocity = ballvelocity;
+
+        }
+    }
     
 }
-[System.Serializable]
+[Serializable]
 class PlayerData
 {
     public int health;
     public int score;
     public int level;
+    public float[] ballvelocity=new float[2];
     public float[] playerPos = new float[3];
     public float[] ballPos = new float[3];
 
 }
-[System.Serializable]
-class BlockData
-{
-    public string blockName;
-    public float[] blockPos =new float[3];
-    public int blockHealth;
-    public int blockScoreValue;
-    
-}
+
+
