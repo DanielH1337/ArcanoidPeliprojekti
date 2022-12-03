@@ -5,6 +5,9 @@ using TMPro;
 using UnityEngine.UI;
 using System;
 using UnityEngine.SceneManagement;
+using System.Runtime.Serialization.Formatters.Binary;
+using System.IO;
+using System;
 
 public class GameSession : MonoBehaviour
 {
@@ -180,14 +183,12 @@ public class GameSession : MonoBehaviour
     }
     private void ResetScreen()
     {
-
         UnPause();
         blackScreen.SetActive(false);
         gameOverText.SetActive(false);
         restartButton.SetActive(false);
         gameWinText.SetActive(false);
-        
-        
+         
     }
 
     private void ResetScore()
@@ -214,10 +215,25 @@ public class GameSession : MonoBehaviour
     private void UnPause()
     {
         Time.timeScale = 1f;
-        
-        
     }
+    
+}
+[System.Serializable]
+class PlayerData
+{
+    public int health;
+    public int score;
+    public int level;
+    public float[] playerPos = new float[3];
+    public float[] ballPos = new float[3];
 
-   
-   
+}
+[System.Serializable]
+class BlockData
+{
+    public string blockName;
+    public float[] blockPos =new float[3];
+    public int blockHealth;
+    public int blockScoreValue;
+    
 }
