@@ -11,11 +11,13 @@ public class ball : MonoBehaviour
 
     Rigidbody2D rb2D;
     AudioSource audiosource;
+ 
 
     private void Awake()
     {
         rb2D = GetComponent<Rigidbody2D>();
         audiosource = GetComponent<AudioSource>();
+      
     }
     private void Start()
     {
@@ -53,20 +55,31 @@ public class ball : MonoBehaviour
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        var blocks = GameObject.FindGameObjectsWithTag("Block");
         if (audiosource != null)
         {
             audiosource.Play();
         }
         if (collision.gameObject.name == "powerUpScale")
         {
-
-            var blocks = GameObject.FindGameObjectsWithTag("Block");
-
             if (blocks.Length > 1)
             {
                 FindObjectOfType<ScaleLerper>().StartFunction();
             }
             
+        }
+        if(collision.gameObject.name == "powerUpBalls")
+        {
+            StartCoroutine(launchAuto());
+        }
+        IEnumerator launchAuto()
+        {
+            for (int x = 0; x < 3; x++)
+            {
+                FindObjectOfType<PlayerController>().ResetBall();
+                FindObjectOfType<PlayerController>().AutoLaunch();
+                yield return new WaitForSeconds(0.5f);
+            }
         }
     }
 }

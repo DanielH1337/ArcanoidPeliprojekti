@@ -382,6 +382,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6859004650679573489, guid: f50ca69ef1edb7c4695bec38c37f2ee4, type: 3}
+      propertyPath: m_Simulated
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f50ca69ef1edb7c4695bec38c37f2ee4, type: 3}
 --- !u!1001 &827020984
@@ -446,6 +450,16 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 165358748333020260, guid: 9f0cbdcb8d8568943bd300e05a7725a8, type: 3}
   m_PrefabInstance: {fileID: 827020984}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1255779363 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6859004650679573494, guid: f50ca69ef1edb7c4695bec38c37f2ee4, type: 3}
+  m_PrefabInstance: {fileID: 795612646}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1365573384 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4453432674376011203, guid: f50ca69ef1edb7c4695bec38c37f2ee4, type: 3}
+  m_PrefabInstance: {fileID: 795612646}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1368025971
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -503,11 +517,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9ae62ed989b83f240861aa39e34abeb5, type: 3}
---- !u!1 &1474836362 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3699023097499062674, guid: 365eba4940b73e94f981713c20552238, type: 3}
-  m_PrefabInstance: {fileID: 1783711074}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1601384869
 GameObject:
   m_ObjectHideFlags: 0
@@ -547,6 +556,11 @@ Transform:
 Transform:
   m_CorrespondingSourceObject: {fileID: 165358748333020260, guid: ff34b18136d3d034487394e61a015620, type: 3}
   m_PrefabInstance: {fileID: 122604024}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1701956610 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4734265824220608502, guid: 365eba4940b73e94f981713c20552238, type: 3}
+  m_PrefabInstance: {fileID: 1783711074}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1783711074
 PrefabInstance:
@@ -604,13 +618,17 @@ PrefabInstance:
       value: GameSession
       objectReference: {fileID: 0}
     - target: {fileID: 8136346115767561729, guid: 365eba4940b73e94f981713c20552238, type: 3}
-      propertyPath: startLives
-      value: 4
-      objectReference: {fileID: 0}
+      propertyPath: ball
+      value: 
+      objectReference: {fileID: 1255779363}
+    - target: {fileID: 8136346115767561729, guid: 365eba4940b73e94f981713c20552238, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 1365573384}
     - target: {fileID: 8136346115767561729, guid: 365eba4940b73e94f981713c20552238, type: 3}
       propertyPath: blackScreen
       value: 
-      objectReference: {fileID: 1474836362}
+      objectReference: {fileID: 1701956610}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 365eba4940b73e94f981713c20552238, type: 3}
 --- !u!1001 &3260240270285967658

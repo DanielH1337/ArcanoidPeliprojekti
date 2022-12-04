@@ -329,8 +329,25 @@ PrefabInstance:
       propertyPath: m_Name
       value: GameSession
       objectReference: {fileID: 0}
+    - target: {fileID: 8136346115767561729, guid: 365eba4940b73e94f981713c20552238, type: 3}
+      propertyPath: ball
+      value: 
+      objectReference: {fileID: 1642450888924200344}
+    - target: {fileID: 8136346115767561729, guid: 365eba4940b73e94f981713c20552238, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 1642450888924200345}
+    - target: {fileID: 8136346115767561729, guid: 365eba4940b73e94f981713c20552238, type: 3}
+      propertyPath: blackScreen
+      value: 
+      objectReference: {fileID: 804130455}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 365eba4940b73e94f981713c20552238, type: 3}
+--- !u!1 &804130455 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4734265824220608502, guid: 365eba4940b73e94f981713c20552238, type: 3}
+  m_PrefabInstance: {fileID: 804130454}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1601384869
 GameObject:
   m_ObjectHideFlags: 0
@@ -548,6 +565,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f50ca69ef1edb7c4695bec38c37f2ee4, type: 3}
+--- !u!1 &1642450888924200344 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6859004650679573494, guid: f50ca69ef1edb7c4695bec38c37f2ee4, type: 3}
+  m_PrefabInstance: {fileID: 1642450888924200343}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1642450888924200345 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4453432674376011203, guid: f50ca69ef1edb7c4695bec38c37f2ee4, type: 3}
+  m_PrefabInstance: {fileID: 1642450888924200343}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &6352206562136642830
 PrefabInstance:
   m_ObjectHideFlags: 0

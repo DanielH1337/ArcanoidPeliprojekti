@@ -26,9 +26,6 @@ public class CustomBounce : MonoBehaviour
             collision.rigidbody.velocity = new Vector2(relativePosition, 1).normalized * collision.rigidbody.velocity.magnitude;
         }
 
-
-
-
     }
 
     public float GetRelativePosition(Transform collision)

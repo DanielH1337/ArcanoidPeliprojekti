@@ -12,6 +12,10 @@ PrefabInstance:
       value: 3
       objectReference: {fileID: 0}
     - target: {fileID: -7589004894158800028, guid: 9f0cbdcb8d8568943bd300e05a7725a8, type: 3}
+      propertyPath: explosion
+      value: 
+      objectReference: {fileID: 5108086251381335303, guid: 193a97b8a898295448a9b7de44a7858a, type: 3}
+    - target: {fileID: -7589004894158800028, guid: 9f0cbdcb8d8568943bd300e05a7725a8, type: 3}
       propertyPath: scoreValue
       value: 30
       objectReference: {fileID: 0}

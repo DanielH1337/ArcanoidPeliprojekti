@@ -32,28 +32,35 @@ public class GameSession : MonoBehaviour
     public GameObject pausePanel;
 
     public float transitionTime=1f;
-    private int levelIndex;
     private int currentLives;
     private int currentScore;
     private int currentHighScore;
+    private float ballposY;
     bool uiCheck=false;
 
-    public static GameSession instance = null;
-    
-   
+    bool loadBool = false;
+
+  
+
     void Start()
     {
-        if (instance == null)
-            instance = this;
-        else if (instance != this)
-            Destroy(gameObject);
+        if(SceneManager.GetActiveScene().buildIndex != 1)
+        {
+            currentScore = PlayerPrefs.GetInt("score");
+            startLives = PlayerPrefs.GetInt("health");
+
+        }
+        loadBool = (PlayerPrefs.GetInt("loadBool")!=0);
+        
         UnPause();
         currentLives = startLives;
-
+        
         restartButton.GetComponent<Button>().onClick.AddListener(Reset);
       
         currentHighScore = PlayerPrefs.GetInt("highscore");
-       
+        ballposY = ball.transform.position.y;
+        
+
     }
 
     // Update is called once per frame
@@ -72,6 +79,13 @@ public class GameSession : MonoBehaviour
         }
         PauseMenu();
 
+        if (SceneManager.GetActiveScene().buildIndex == PlayerPrefs.GetInt("Scene")&&loadBool == true)
+        {
+            Load();
+            loadBool = false;
+            PlayerPrefs.SetInt("loadBool", (loadBool ? 1 : 0));
+        }
+
     }
 
     private void PauseMenu()
@@ -87,9 +101,6 @@ public class GameSession : MonoBehaviour
             pausePanel.SetActive(false);
         }
     }
-
-   
-    
 
     private void CountBalls()
     {
@@ -139,6 +150,8 @@ public class GameSession : MonoBehaviour
     {
         var numberOfScenes = SceneManager.sceneCountInBuildSettings;
         var currentBuildIndex = SceneManager.GetActiveScene().buildIndex;
+        PlayerPrefs.SetInt("score", currentScore);
+        PlayerPrefs.SetInt("health", currentLives);
 
         if(currentBuildIndex == numberOfScenes -1)
         {
@@ -240,17 +253,24 @@ public class GameSession : MonoBehaviour
         data.ballPos[2] = ball.transform.position.y;
         bf.Serialize(file, data);
         file.Close();
+        PlayerPrefs.SetInt("Scene",SceneManager.GetActiveScene().buildIndex);
 
     }
+  
     public void Load()
     {
-        if (File.Exists(Application.persistentDataPath + "/playerInfo.dat"))
+        if(SceneManager.GetActiveScene().buildIndex != PlayerPrefs.GetInt("Scene"))
+        {
+            loadBool = true;
+            PlayerPrefs.SetInt("loadBool", (loadBool ? 1 : 0));
+            SceneManager.LoadScene(PlayerPrefs.GetInt("Scene"));
+        }
+        else if (File.Exists(Application.persistentDataPath + "/playerInfo.dat"))
         {
             BinaryFormatter bf = new BinaryFormatter();
             FileStream file = File.Open(Application.persistentDataPath + "/playerInfo.dat", FileMode.Open);
             PlayerData data = (PlayerData)bf.Deserialize(file);
             file.Close();
-            levelIndex = data.level;
             currentLives = data.health;
             currentScore = data.score;
             Vector3 playerPosition;
@@ -266,8 +286,11 @@ public class GameSession : MonoBehaviour
             Vector2 ballvelocity;
             ballvelocity.x = data.ballvelocity[0];
             ballvelocity.y = data.ballvelocity[1];
-            ball.GetComponent<Rigidbody2D>().velocity = ballvelocity;
-
+            if (ball.transform.position.y != ballposY)
+            {
+                FindObjectOfType<ball>().Launch(ballvelocity);
+            }
+            
         }
     }
     

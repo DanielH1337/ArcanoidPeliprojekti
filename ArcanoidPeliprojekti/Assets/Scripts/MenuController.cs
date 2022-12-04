@@ -10,6 +10,7 @@ public class MenuController : MonoBehaviour
     [SerializeField] GameObject startButton;
     public GameObject loadButton;
     public GameObject exitButton;
+    bool loadControl;
     // Start is called before the first frame update
     void Start()
     {
@@ -29,7 +30,11 @@ public class MenuController : MonoBehaviour
     }
     public void LoadGame()
     {
-        Debug.Log("Loading");
+        loadControl = (PlayerPrefs.GetInt("loadBool") != 0);
+        loadControl = true;
+        PlayerPrefs.SetInt("loadBool", (loadControl ? 1 : 0));
+        SceneManager.LoadScene(PlayerPrefs.GetInt("Scene"));
+        
     }
     public void ExitGame()
     {
