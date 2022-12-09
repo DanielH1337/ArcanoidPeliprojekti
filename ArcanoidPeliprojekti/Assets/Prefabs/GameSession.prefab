@@ -403,6 +403,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 8136346115767561729}
+        m_TargetAssemblyTypeName: GameSession, Assembly-CSharp
+        m_MethodName: LoadBlocks
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1330073363
 GameObject:
   m_ObjectHideFlags: 0
@@ -797,6 +809,18 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 8136346115767561729}
         m_TargetAssemblyTypeName: GameSession, Assembly-CSharp
+        m_MethodName: SaveBlocks
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 8136346115767561729}
+        m_TargetAssemblyTypeName: GameSession, Assembly-CSharp
         m_MethodName: Save
         m_Mode: 1
         m_Arguments:
@@ -988,18 +1012,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76d9f9f817a4abc48bc9adba5fa6b878, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  blockPosList: []
+  blockPrefabs:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   transition: {fileID: 3757072617482556754}
   livesText: {fileID: 3699023097860664956}
   scoreText: {fileID: 3699023098463353950}
   highScoreText: {fileID: 3699023096775470604}
   startLives: 4
-  blackScreen: {fileID: 3699023097499062674}
+  blackScreen: {fileID: 4734265824220608502}
   gameOverText: {fileID: 3699023097999059266}
   gameWinText: {fileID: 2857628348984318252}
   restartButton: {fileID: 3699023096807332823}
   player: {fileID: 0}
   ball: {fileID: 0}
-  blocks: []
   pausePanel: {fileID: 7471864210764807158}
   transitionTime: 1
 --- !u!82 &1740235773
@@ -1239,11 +1269,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 8225234157882188623, guid: 0cd47561710b07144b90ab3ab5e0edc4, type: 3}
   m_PrefabInstance: {fileID: 4715399701867837592}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &3699023097499062674 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8225234157189802250, guid: 0cd47561710b07144b90ab3ab5e0edc4, type: 3}
-  m_PrefabInstance: {fileID: 4715399701867837592}
-  m_PrefabAsset: {fileID: 0}
 --- !u!114 &3699023097860664956 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8225234158841206500, guid: 0cd47561710b07144b90ab3ab5e0edc4, type: 3}
@@ -1279,6 +1304,11 @@ RectTransform:
 --- !u!95 &3757072617482556754 stripped
 Animator:
   m_CorrespondingSourceObject: {fileID: 8454306157894675914, guid: 0cd47561710b07144b90ab3ab5e0edc4, type: 3}
+  m_PrefabInstance: {fileID: 4715399701867837592}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &4734265824220608502 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 54899323156057966, guid: 0cd47561710b07144b90ab3ab5e0edc4, type: 3}
   m_PrefabInstance: {fileID: 4715399701867837592}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &7471864210764807158 stripped

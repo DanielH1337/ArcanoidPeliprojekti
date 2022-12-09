@@ -22,14 +22,13 @@ public class PlayerController : MonoBehaviour
     {
         ball Ball = GetComponentInChildren<ball>();
         balloffset = Ball.transform.position - transform.position;
-        Debug.Log(Ball.transform.position+","+transform.position);
-        Debug.Log(balloffset);        
+       // Debug.Log(Ball.transform.position+","+transform.position);
+        //Debug.Log(balloffset);        
     }
 
     // Update is called once per frame
     void Update()
     {
-        
         rb2D.velocity = new Vector2(Input.GetAxis("Horizontal")*speed, 0);
 
         if(transform.childCount > 0 && Input.GetButtonDown("Jump"))
@@ -39,7 +38,6 @@ public class PlayerController : MonoBehaviour
             float relativePosition= customBounce.GetRelativePosition(ball.transform);
             ball.Launch(new Vector2(relativePosition,1));
         }
-       
     }
     public void AutoLaunch()
     {

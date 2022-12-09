@@ -12,8 +12,15 @@ using System;
 public class GameSession : MonoBehaviour
 {
 
-    public Animator transition;
+    public  List<Vector3> blockPosList=new List<Vector3>();
+    public static List<int> healthlist=new List<int>();
 
+    public List<block> blockPrefabs; 
+    public static List<block> blocks = new List<block>();
+
+    public Animator transition;
+    const string block_sub = "/block";
+    const string block_Count_sub = "/block.count";
     [SerializeField] TMP_Text livesText;
     [SerializeField] TMP_Text scoreText;
     [SerializeField] TMP_Text highScoreText;
@@ -27,7 +34,6 @@ public class GameSession : MonoBehaviour
     public GameObject player;
     public GameObject ball;
 
-    public GameObject[] blocks;
  
     public GameObject pausePanel;
 
@@ -40,10 +46,19 @@ public class GameSession : MonoBehaviour
 
     bool loadBool = false;
 
-  
-
+    public static GameSession instance;
+    private void Awake()
+    {
+        if (instance != null)
+        {
+            Debug.LogError("asd");
+        }
+        instance = this;
+    }
     void Start()
     {
+        
+        Debug.Log(loadBool);
         if(SceneManager.GetActiveScene().buildIndex != 1)
         {
             currentScore = PlayerPrefs.GetInt("score");
@@ -81,7 +96,10 @@ public class GameSession : MonoBehaviour
 
         if (SceneManager.GetActiveScene().buildIndex == PlayerPrefs.GetInt("Scene")&&loadBool == true)
         {
+            LoadBlocks();
             Load();
+          //  Debug.Log("testi1");
+            block.loadblocks = true;
             loadBool = false;
             PlayerPrefs.SetInt("loadBool", (loadBool ? 1 : 0));
         }
@@ -232,8 +250,82 @@ public class GameSession : MonoBehaviour
     {
         Time.timeScale = 1f;
     }
+    public void SaveBlocks()
+    {
+       /* for (int i = 0; i < 100; i++)
+        {
+            DeleteFile("block" + i);
+            DeleteFile("block.count" + i);
+        }*/
+        BinaryFormatter formatter = new BinaryFormatter();
+        string path = Application.persistentDataPath + block_sub + SceneManager.GetActiveScene().buildIndex;
+        string countpath = Application.persistentDataPath + block_Count_sub + SceneManager.GetActiveScene().buildIndex;
+
+        FileStream countStream = new FileStream(countpath, FileMode.Create);
+        formatter.Serialize(countStream, blocks.Count);
+        countStream.Close();
+
+
+        for (int i=0;i < blocks.Count; i++)
+        {
+            FileStream stream = new FileStream(path + i, FileMode.Create);
+            BlockData bdata = new BlockData(blocks[i]);
+            formatter.Serialize(stream, bdata);
+            stream.Close();
+        }
+    }
+  
+    public void LoadBlocks()
+    {
+        Debug.Log("Load Testi");
+        BinaryFormatter formatter = new BinaryFormatter();
+        string path = Application.persistentDataPath + block_sub + SceneManager.GetActiveScene().buildIndex;
+        string countpath = Application.persistentDataPath + block_Count_sub + SceneManager.GetActiveScene().buildIndex;
+        int blockCount = 0;
+        if (File.Exists(countpath))
+        {
+            
+            FileStream countStream = new FileStream(countpath, FileMode.Open);
+            blockCount = (int)formatter.Deserialize(countStream);
+            countStream.Close();
+        }
+        else
+        {
+            Debug.LogError("file not found in "+countpath);
+        }
+
+        for (int i = 0; i < blockCount; i++)
+        {
+            if (File.Exists(path + i))
+            {
+                
+                FileStream stream = new FileStream(path + i, FileMode.Open);
+                BlockData bdata = formatter.Deserialize(stream) as BlockData;
+                stream.Close();
+                Vector3 position = new Vector3(bdata.blockPos[0], bdata.blockPos[1], bdata.blockPos[2]);
+               // Debug.Log(position);
+                blockPosList.Add(position);
+                healthlist.Add(bdata.blockHealth);
+                
+            }
+            else
+            {
+                Debug.LogError("file not found in " + path+i);
+            }
+            
+        }
+        File.Delete(path);
+
+    }
+    public void DeleteFile(string filename)
+    {
+        string path = Application.persistentDataPath + "/" + filename;
+        File.Delete(path);
+    }
+    
     public void Save()
     {
+        
         BinaryFormatter bf = new BinaryFormatter();
         FileStream file = File.Create(Application.persistentDataPath + "/playerInfo.dat");
         PlayerData data = new PlayerData();
@@ -267,6 +359,28 @@ public class GameSession : MonoBehaviour
         }
         else if (File.Exists(Application.persistentDataPath + "/playerInfo.dat"))
         {
+            LoadBlocks();
+            var blockPosListlen = blockPosList.Count;
+            int failCount;
+            foreach(block block in blockPrefabs)
+            {
+                failCount = 0;
+                Vector3 blockvector3 = block.transform.position;
+                for (int i = 0; i < blockPosListlen; i++)
+                {
+                    if(blockvector3 != blockPosList[i])
+                    {
+                        failCount += 1;
+                        if (failCount == blockPosListlen)
+                        {
+                            block.SetActiveFalse();
+                        }
+                    }
+                  
+                }
+            }
+
+
             BinaryFormatter bf = new BinaryFormatter();
             FileStream file = File.Open(Application.persistentDataPath + "/playerInfo.dat", FileMode.Open);
             PlayerData data = (PlayerData)bf.Deserialize(file);
@@ -304,7 +418,25 @@ class PlayerData
     public float[] ballvelocity=new float[2];
     public float[] playerPos = new float[3];
     public float[] ballPos = new float[3];
+    
 
 }
+[Serializable]
+class BlockData
+{
+    public int blockHealth;
+    public string blockName;
+    public float[] blockPos;
 
+    public BlockData(block block)
+    {
+        blockHealth = block.health;
+        blockName = block.name;
+        Vector3 blockPosition = block.transform.position;
+        blockPos = new float[]
+        {
+            blockPosition.x, blockPosition.y, blockPosition.z
+        };
+    }
+}
 

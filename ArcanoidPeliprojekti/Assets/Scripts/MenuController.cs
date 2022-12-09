@@ -4,6 +4,8 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using System.Runtime.Serialization.Formatters.Binary;
+using System.IO;
 
 public class MenuController : MonoBehaviour
 {
@@ -39,5 +41,7 @@ public class MenuController : MonoBehaviour
     public void ExitGame()
     {
         Application.Quit();
+
     }
+   
 }
