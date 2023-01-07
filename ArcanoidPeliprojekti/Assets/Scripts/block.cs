@@ -19,7 +19,6 @@ public class block : MonoBehaviour
             GameSession.blocks.Add(this);
         }
         
-
     }
     private void Start()
     {   

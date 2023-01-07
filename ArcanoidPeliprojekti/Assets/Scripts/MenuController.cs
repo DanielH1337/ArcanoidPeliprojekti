@@ -16,6 +16,7 @@ public class MenuController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+         
         startButton.GetComponent<Button>().onClick.AddListener(Startgame);
         loadButton.GetComponent<Button>().onClick.AddListener(LoadGame);
         exitButton.GetComponent<Button>().onClick.AddListener(ExitGame);

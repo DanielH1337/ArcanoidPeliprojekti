@@ -31,6 +31,7 @@ public class ScaleLerper : MonoBehaviour
     }
     public IEnumerator RepeatLerp(Vector3 a, Vector3 b, float time)
     {
+        
         float i = 0.0f;
         float rate = (1.0f / time) * speed;
         audio.Play();

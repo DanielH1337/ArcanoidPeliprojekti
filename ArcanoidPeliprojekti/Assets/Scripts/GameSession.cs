@@ -49,14 +49,15 @@ public class GameSession : MonoBehaviour
    // public static GameSession instance;
     private void Awake()
     {
-        
-    }
-    void Start()
-    {
         foreach (block block in blocks)
         {
             Debug.Log(block);
+
         }
+    }
+    void Start()
+    {
+        
         Debug.Log(loadBool);
         if(SceneManager.GetActiveScene().buildIndex != 1)
         {
@@ -273,14 +274,16 @@ public class GameSession : MonoBehaviour
         {
            
             
-            FileStream stream = new FileStream(path + i, FileMode.Create);
+            
             if (blocks[i] != null)
             {
+                FileStream stream = new FileStream(path + i, FileMode.Create);
                 BlockData bdata = new BlockData(blocks[i]);
                 formatter.Serialize(stream, bdata);
+                stream.Close();
             }
        
-            stream.Close();
+            
             
         }
     }
