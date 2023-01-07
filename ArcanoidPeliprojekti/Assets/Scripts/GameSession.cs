@@ -44,20 +44,19 @@ public class GameSession : MonoBehaviour
     private float ballposY;
     bool uiCheck=false;
 
-    bool loadBool = false;
+    public bool loadBool = false;
 
-    public static GameSession instance;
+   // public static GameSession instance;
     private void Awake()
     {
-        if (instance != null)
-        {
-            Debug.LogError("asd");
-        }
-        instance = this;
+        
     }
     void Start()
     {
-        
+        foreach (block block in blocks)
+        {
+            Debug.Log(block);
+        }
         Debug.Log(loadBool);
         if(SceneManager.GetActiveScene().buildIndex != 1)
         {
@@ -66,6 +65,7 @@ public class GameSession : MonoBehaviour
 
         }
         loadBool = (PlayerPrefs.GetInt("loadBool")!=0);
+        Debug.Log(loadBool);
         
         UnPause();
         currentLives = startLives;
@@ -96,11 +96,11 @@ public class GameSession : MonoBehaviour
 
         if (SceneManager.GetActiveScene().buildIndex == PlayerPrefs.GetInt("Scene")&&loadBool == true)
         {
-            LoadBlocks();
-            Load();
-          //  Debug.Log("testi1");
+           // LoadBlocks();
+            Debug.Log("testi1");
             block.loadblocks = true;
             loadBool = false;
+            Load();
             PlayerPrefs.SetInt("loadBool", (loadBool ? 1 : 0));
         }
 
@@ -252,11 +252,14 @@ public class GameSession : MonoBehaviour
     }
     public void SaveBlocks()
     {
-       /* for (int i = 0; i < 100; i++)
+       
+       /* string[] filePaths = Directory.GetFiles(Application.persistentDataPath); 
+        foreach (string filePath in filePaths)
         {
-            DeleteFile("block" + i);
-            DeleteFile("block.count" + i);
+            File.Delete(filePath);
         }*/
+        
+      
         BinaryFormatter formatter = new BinaryFormatter();
         string path = Application.persistentDataPath + block_sub + SceneManager.GetActiveScene().buildIndex;
         string countpath = Application.persistentDataPath + block_Count_sub + SceneManager.GetActiveScene().buildIndex;
@@ -268,16 +271,24 @@ public class GameSession : MonoBehaviour
 
         for (int i=0;i < blocks.Count; i++)
         {
+           
+            
             FileStream stream = new FileStream(path + i, FileMode.Create);
-            BlockData bdata = new BlockData(blocks[i]);
-            formatter.Serialize(stream, bdata);
+            if (blocks[i] != null)
+            {
+                BlockData bdata = new BlockData(blocks[i]);
+                formatter.Serialize(stream, bdata);
+            }
+       
             stream.Close();
+            
         }
     }
   
     public void LoadBlocks()
     {
         Debug.Log("Load Testi");
+        blockPosList.Clear();
         BinaryFormatter formatter = new BinaryFormatter();
         string path = Application.persistentDataPath + block_sub + SceneManager.GetActiveScene().buildIndex;
         string countpath = Application.persistentDataPath + block_Count_sub + SceneManager.GetActiveScene().buildIndex;
@@ -315,6 +326,7 @@ public class GameSession : MonoBehaviour
             
         }
         File.Delete(path);
+       
 
     }
     public void DeleteFile(string filename)
@@ -356,16 +368,18 @@ public class GameSession : MonoBehaviour
             loadBool = true;
             PlayerPrefs.SetInt("loadBool", (loadBool ? 1 : 0));
             SceneManager.LoadScene(PlayerPrefs.GetInt("Scene"));
+            Debug.Log("loadkutsuttu");
         }
         else if (File.Exists(Application.persistentDataPath + "/playerInfo.dat"))
         {
             LoadBlocks();
             var blockPosListlen = blockPosList.Count;
             int failCount;
-            foreach(block block in blockPrefabs)
+            int blockPrefabsCount = blockPrefabs.Count;
+            for(int x=0; x < blockPrefabsCount; x++)
             {
                 failCount = 0;
-                Vector3 blockvector3 = block.transform.position;
+                Vector3 blockvector3 = blockPrefabs[x].transform.position;
                 for (int i = 0; i < blockPosListlen; i++)
                 {
                     if(blockvector3 != blockPosList[i])
@@ -373,14 +387,14 @@ public class GameSession : MonoBehaviour
                         failCount += 1;
                         if (failCount == blockPosListlen)
                         {
-                            block.SetActiveFalse();
+                         //   blockPrefabs.Remove(blockPrefabs[x]);
+                            blockPrefabs[x].SetActiveFalse();
                         }
                     }
                   
                 }
             }
-
-
+            
             BinaryFormatter bf = new BinaryFormatter();
             FileStream file = File.Open(Application.persistentDataPath + "/playerInfo.dat", FileMode.Open);
             PlayerData data = (PlayerData)bf.Deserialize(file);

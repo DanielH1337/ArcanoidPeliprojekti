@@ -28,6 +28,7 @@ public class MenuController : MonoBehaviour
     }
     public void Startgame()
     {
+      //  File.Delete(Application.persistentDataPath + "/playerInfo.dat");
         SceneManager.LoadScene(1);
     }
     public void LoadGame()

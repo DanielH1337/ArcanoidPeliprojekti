@@ -14,14 +14,19 @@ public class block : MonoBehaviour
 
     void Awake()
     {
+        if(this != null)
+        {
+            GameSession.blocks.Add(this);
+        }
         
-        GameSession.blocks.Add(this);
+
     }
     private void Start()
     {   
         orginalColor = gameObject.GetComponent<Renderer>().material.color;
-        
-        
+     
+
+
     }
     public void Update()
     {
