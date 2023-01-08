@@ -105,6 +105,7 @@ public class GameSession : MonoBehaviour
             loadBool = false;
             Load();
             PlayerPrefs.SetInt("loadBool", (loadBool ? 1 : 0));
+            SaveButton.interactable = false;
         }
 
     }
