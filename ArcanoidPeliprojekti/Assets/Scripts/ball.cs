@@ -64,7 +64,8 @@ public class ball : MonoBehaviour
         {
             if (blocks.Length > 1)
             {
-                FindObjectOfType<ScaleLerper>().StartFunction();
+                //FindObjectOfType<ScaleLerper>().StartFunction();
+                GameObject.FindGameObjectWithTag("Player").GetComponent<ScaleLerper>().StartFunction();
             }
             
         }
@@ -80,6 +81,14 @@ public class ball : MonoBehaviour
                 FindObjectOfType<PlayerController>().AutoLaunch();
                 yield return new WaitForSeconds(0.5f);
             }
+        }
+        if(collision.gameObject.name == "powerUpBallScale")
+        {
+            if(blocks.Length > 1)
+            {
+                gameObject.GetComponent<ScaleLerper>().StartFunction();
+            }
+           
         }
     }
 }

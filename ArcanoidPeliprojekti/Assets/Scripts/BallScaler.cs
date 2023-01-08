@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class BallScaler : MonoBehaviour
 {
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -14,5 +15,12 @@ public class BallScaler : MonoBehaviour
     void Update()
     {
         
+    }
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if(collision.gameObject.tag == "Ball")
+        {
+
+        }
     }
 }

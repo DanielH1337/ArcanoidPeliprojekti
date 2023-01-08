@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 165358748333020263}
   - component: {fileID: 165358748333020261}
   - component: {fileID: -7589004894158800028}
-  - component: {fileID: -7071359130560106582}
   m_Layer: 0
   m_Name: powerUpBallScale
   m_TagString: Block
@@ -77,7 +76,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 49c71735d96b9b54d8d34891ba290d96, type: 3}
-  m_Color: {r: 0.1771983, g: 0.20754719, b: 0.1928022, a: 1}
+  m_Color: {r: 0.4339623, g: 0.06755074, b: 0.28614542, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -127,15 +126,3 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   explosion: {fileID: 5108086251381335303, guid: 193a97b8a898295448a9b7de44a7858a, type: 3}
   health: 1
---- !u!114 &-7071359130560106582
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 165358748333020262}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 131f2df2b8ebd894a979970d37703184, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 

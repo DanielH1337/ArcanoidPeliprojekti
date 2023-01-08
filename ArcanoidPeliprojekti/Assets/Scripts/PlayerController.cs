@@ -61,7 +61,7 @@ public class PlayerController : MonoBehaviour
         ball.transform.localScale = new Vector3(0.006436407f, 0.0685645f, 0.5023538f);
         if(balls.Length < 1)
         {
-            FindObjectOfType<ScaleLerper>().StopAllCoroutines();
+            GameObject.FindGameObjectWithTag("Player").GetComponent<ScaleLerper>().StopAllCoroutines();
         }
         gameObject.transform.localScale = new Vector3(400f, 37f, 0.8f);
     }
