@@ -18,8 +18,19 @@ public class MenuController : MonoBehaviour
     {
          
         startButton.GetComponent<Button>().onClick.AddListener(Startgame);
+        startButton.GetComponent<Button>().onClick.AddListener(deleteSaveData);
         loadButton.GetComponent<Button>().onClick.AddListener(LoadGame);
         exitButton.GetComponent<Button>().onClick.AddListener(ExitGame);
+
+       
+        if (File.Exists(Application.persistentDataPath + "/playerInfo.dat"))
+        {
+            loadButton.GetComponent<Button>().interactable = true;
+        }
+        else
+        {
+            loadButton.GetComponent<Button>().interactable = false;
+        }
     }
 
     // Update is called once per frame
@@ -45,5 +56,13 @@ public class MenuController : MonoBehaviour
         Application.Quit();
 
     }
-   
+    private void deleteSaveData()
+    {
+        string[] filePaths = Directory.GetFiles(Application.persistentDataPath); 
+        foreach (string filePath in filePaths)
+        {
+            File.Delete(filePath);
+        }
+    }
+
 }

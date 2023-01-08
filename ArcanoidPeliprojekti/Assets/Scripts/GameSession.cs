@@ -31,6 +31,8 @@ public class GameSession : MonoBehaviour
     [SerializeField] GameObject gameWinText;
     [SerializeField] GameObject restartButton;
 
+
+    public Button SaveButton;
     public GameObject player;
     public GameObject ball;
 
@@ -105,6 +107,12 @@ public class GameSession : MonoBehaviour
             PlayerPrefs.SetInt("loadBool", (loadBool ? 1 : 0));
         }
 
+    }
+    public void setSaveButtonInactive()
+    {
+        SaveButton.interactable = false;
+        pausePanel.SetActive(false);
+        UnPause();
     }
 
     private void PauseMenu()
@@ -273,8 +281,6 @@ public class GameSession : MonoBehaviour
         for (int i=0;i < blocks.Count; i++)
         {
            
-            
-            
             if (blocks[i] != null)
             {
                 FileStream stream = new FileStream(path + i, FileMode.Create);
@@ -282,9 +288,7 @@ public class GameSession : MonoBehaviour
                 formatter.Serialize(stream, bdata);
                 stream.Close();
             }
-       
-            
-            
+        
         }
     }
   
@@ -330,7 +334,6 @@ public class GameSession : MonoBehaviour
         }
         File.Delete(path);
        
-
     }
     public void DeleteFile(string filename)
     {
