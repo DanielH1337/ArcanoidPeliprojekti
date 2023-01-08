@@ -403,18 +403,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 8136346115767561729}
-        m_TargetAssemblyTypeName: GameSession, Assembly-CSharp
-        m_MethodName: LoadBlocks
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!1 &1330073363
 GameObject:
   m_ObjectHideFlags: 0
@@ -831,6 +819,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 8136346115767561729}
+        m_TargetAssemblyTypeName: GameSession, Assembly-CSharp
+        m_MethodName: setSaveButtonInactive
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &2857628348984318252
 GameObject:
   m_ObjectHideFlags: 0
@@ -1028,10 +1028,12 @@ MonoBehaviour:
   gameOverText: {fileID: 3699023097999059266}
   gameWinText: {fileID: 2857628348984318252}
   restartButton: {fileID: 3699023096807332823}
+  SaveButton: {fileID: 1440097424}
   player: {fileID: 0}
   ball: {fileID: 0}
   pausePanel: {fileID: 7471864210764807158}
   transitionTime: 1
+  loadBool: 0
 --- !u!82 &1740235773
 AudioSource:
   m_ObjectHideFlags: 0
