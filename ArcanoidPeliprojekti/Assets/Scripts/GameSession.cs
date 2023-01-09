@@ -351,7 +351,7 @@ public class GameSession : MonoBehaviour
     {
         
         BinaryFormatter bf = new BinaryFormatter();
-        FileStream file = File.Create(Application.persistentDataPath + "/playerInfo.dat");
+        FileStream file = File.Create(Application.persistentDataPath + "/Info");
         PlayerData data = new PlayerData();
         data.health = currentLives;
         data.score = currentScore;
@@ -382,7 +382,7 @@ public class GameSession : MonoBehaviour
             SceneManager.LoadScene(PlayerPrefs.GetInt("Scene"));
             Debug.Log("loadkutsuttu");
         }
-        else if (File.Exists(Application.persistentDataPath + "/playerInfo.dat"))
+        else if (File.Exists(Application.persistentDataPath + "/Info"))
         {
             LoadBlocks();
             var blockPosListlen = blockPosList.Count;
@@ -408,7 +408,7 @@ public class GameSession : MonoBehaviour
             }
             
             BinaryFormatter bf = new BinaryFormatter();
-            FileStream file = File.Open(Application.persistentDataPath + "/playerInfo.dat", FileMode.Open);
+            FileStream file = File.Open(Application.persistentDataPath + "/Info", FileMode.Open);
             PlayerData data = (PlayerData)bf.Deserialize(file);
             file.Close();
             currentLives = data.health;

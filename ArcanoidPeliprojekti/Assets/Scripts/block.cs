@@ -10,6 +10,7 @@ public class block : MonoBehaviour
     public int scoreValue;
     private Color orginalColor;
     public static bool loadblocks=false;
+ 
 
 
     void Awake()
@@ -50,7 +51,9 @@ public class block : MonoBehaviour
             health--;
             if(health <= 0)
             {
-                explosion.Play();
+                ParticleSystem newExplosion = Instantiate(explosion);
+                newExplosion.transform.position = gameObject.transform.position;
+                newExplosion.Play();
                 FindObjectOfType<GameSession>().increaseScore(scoreValue);
                 FindObjectOfType<GameSession>().blockPrefabs.Remove(this);
                 GameSession.blocks.Remove(this);

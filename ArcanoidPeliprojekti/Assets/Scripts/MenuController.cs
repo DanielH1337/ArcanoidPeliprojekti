@@ -30,7 +30,7 @@ public class MenuController : MonoBehaviour
         backButton.GetComponent<Button>().onClick.AddListener(ShowMainMenu);
 
        
-        if (File.Exists(Application.persistentDataPath + "/playerInfo.dat"))
+        if (File.Exists(Application.persistentDataPath + "/Info"))
         {
             loadButton.GetComponent<Button>().interactable = true;
         }
@@ -83,7 +83,8 @@ public class MenuController : MonoBehaviour
         {
             File.Delete(filePath);
         }
-        PlayerPrefs.DeleteAll();
+      
+        
     }
 
 }
