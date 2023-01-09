@@ -277,7 +277,7 @@ MonoBehaviour:
   maxScale: {x: 700, y: 37, z: 0.8}
   speed: 3
   duration: 1
-  time: 10
+  time: 3
 --- !u!1001 &1641780912
 PrefabInstance:
   m_ObjectHideFlags: 0

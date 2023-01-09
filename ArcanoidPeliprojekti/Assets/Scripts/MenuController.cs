@@ -12,15 +12,22 @@ public class MenuController : MonoBehaviour
     [SerializeField] GameObject startButton;
     public GameObject loadButton;
     public GameObject exitButton;
+    public GameObject settingsButton;
+    public GameObject backButton;
+    public GameObject settingsMenu;
+    public GameObject mainMenu;
     bool loadControl;
     // Start is called before the first frame update
     void Start()
     {
-         
+        
+
         startButton.GetComponent<Button>().onClick.AddListener(Startgame);
         startButton.GetComponent<Button>().onClick.AddListener(deleteSaveData);
         loadButton.GetComponent<Button>().onClick.AddListener(LoadGame);
         exitButton.GetComponent<Button>().onClick.AddListener(ExitGame);
+        settingsButton.GetComponent<Button>().onClick.AddListener(ShowSettingsMenu);
+        backButton.GetComponent<Button>().onClick.AddListener(ShowMainMenu);
 
        
         if (File.Exists(Application.persistentDataPath + "/playerInfo.dat"))
@@ -37,6 +44,19 @@ public class MenuController : MonoBehaviour
     void Update()
     {
         
+    }
+    public void ShowSettingsMenu()
+    {
+       
+        mainMenu.SetActive(false);
+        
+        settingsMenu.SetActive(true);
+        
+    }
+    public void ShowMainMenu()
+    {
+        mainMenu.SetActive(true);
+        settingsMenu.SetActive(false);
     }
     public void Startgame()
     {
@@ -63,6 +83,7 @@ public class MenuController : MonoBehaviour
         {
             File.Delete(filePath);
         }
+        PlayerPrefs.DeleteAll();
     }
 
 }
