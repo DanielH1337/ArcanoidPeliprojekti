@@ -953,6 +953,10 @@ PrefabInstance:
       propertyPath: blockPrefabs.Array.data[4]
       value: 
       objectReference: {fileID: 1194157053}
+    - target: {fileID: 8136346115767561729, guid: 365eba4940b73e94f981713c20552238, type: 3}
+      propertyPath: blockPrefabs.Array.data[5]
+      value: 
+      objectReference: {fileID: 1561703051}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 365eba4940b73e94f981713c20552238, type: 3}
 --- !u!20 &1868181732 stripped

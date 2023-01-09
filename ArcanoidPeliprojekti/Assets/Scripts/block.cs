@@ -7,7 +7,7 @@ public class block : MonoBehaviour
 {
     public ParticleSystem explosion;
     public int health = 1;
-    int scoreValue = 10;
+    public int scoreValue;
     private Color orginalColor;
     public static bool loadblocks=false;
 

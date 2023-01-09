@@ -115,6 +115,11 @@ public class GameSession : MonoBehaviour
         pausePanel.SetActive(false);
         UnPause();
     }
+    public void loadButtonContinue()
+    {
+        pausePanel.SetActive(false);
+        UnPause();
+    }
 
     private void PauseMenu()
     {
