@@ -3282,7 +3282,6 @@ GameObject:
   - component: {fileID: 983985737}
   - component: {fileID: 983985740}
   - component: {fileID: 983985739}
-  - component: {fileID: 983985738}
   m_Layer: 5
   m_Name: RawImage
   m_TagString: Untagged
@@ -3310,21 +3309,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &983985738
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 983985736}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 576446623cc7d3649b314d37aa6edf8a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _img: {fileID: 983985739}
-  _x: 0.02
-  _y: 0.02
 --- !u!114 &983985739
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3797,6 +3781,7 @@ GameObject:
   - component: {fileID: 1400497604}
   - component: {fileID: 1400497608}
   - component: {fileID: 1400497609}
+  - component: {fileID: 1400497610}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -3921,6 +3906,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   audioMixer: {fileID: 24100000, guid: 049f8ff3e8d334c449a4ce6f151e4fd9, type: 2}
   resolutionDropDown: {fileID: 219992013}
+--- !u!114 &1400497610
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1400497603}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 576446623cc7d3649b314d37aa6edf8a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _img: {fileID: 983985739}
+  _x: 0.02
+  _y: 0.02
 --- !u!1 &1411676402
 GameObject:
   m_ObjectHideFlags: 0

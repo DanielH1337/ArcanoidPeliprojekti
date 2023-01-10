@@ -21,7 +21,6 @@ public class MenuController : MonoBehaviour
     void Start()
     {
         
-
         startButton.GetComponent<Button>().onClick.AddListener(Startgame);
         startButton.GetComponent<Button>().onClick.AddListener(deleteSaveData);
         loadButton.GetComponent<Button>().onClick.AddListener(LoadGame);
@@ -29,6 +28,7 @@ public class MenuController : MonoBehaviour
         settingsButton.GetComponent<Button>().onClick.AddListener(ShowSettingsMenu);
         backButton.GetComponent<Button>().onClick.AddListener(ShowMainMenu);
 
+        gameObject.GetComponent<Scroller>().enabled = true;
        
         if (File.Exists(Application.persistentDataPath + "/Info"))
         {
@@ -40,6 +40,7 @@ public class MenuController : MonoBehaviour
         }
     }
 
+    
     // Update is called once per frame
     void Update()
     {
