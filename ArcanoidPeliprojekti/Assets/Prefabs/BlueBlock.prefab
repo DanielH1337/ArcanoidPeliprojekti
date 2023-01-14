@@ -15,6 +15,10 @@ PrefabInstance:
       propertyPath: scoreValue
       value: 20
       objectReference: {fileID: 0}
+    - target: {fileID: -7589004894158800028, guid: 9f0cbdcb8d8568943bd300e05a7725a8, type: 3}
+      propertyPath: spriteGlowEffect
+      value: 
+      objectReference: {fileID: 2192152209936773663}
     - target: {fileID: 165358748333020260, guid: 9f0cbdcb8d8568943bd300e05a7725a8, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -75,5 +79,32 @@ PrefabInstance:
       propertyPath: m_Color.r
       value: 0.10196078
       objectReference: {fileID: 0}
+    - target: {fileID: 1341256494892165691, guid: 9f0cbdcb8d8568943bd300e05a7725a8, type: 3}
+      propertyPath: glowColor.b
+      value: 0.93333334
+      objectReference: {fileID: 0}
+    - target: {fileID: 1341256494892165691, guid: 9f0cbdcb8d8568943bd300e05a7725a8, type: 3}
+      propertyPath: glowColor.g
+      value: 0.29515824
+      objectReference: {fileID: 0}
+    - target: {fileID: 1341256494892165691, guid: 9f0cbdcb8d8568943bd300e05a7725a8, type: 3}
+      propertyPath: glowColor.r
+      value: 0.10196078
+      objectReference: {fileID: 0}
+    - target: {fileID: 1341256494892165691, guid: 9f0cbdcb8d8568943bd300e05a7725a8, type: 3}
+      propertyPath: glowBrightness
+      value: 2.39
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9f0cbdcb8d8568943bd300e05a7725a8, type: 3}
+--- !u!114 &2192152209936773663 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1341256494892165691, guid: 9f0cbdcb8d8568943bd300e05a7725a8, type: 3}
+  m_PrefabInstance: {fileID: 932543636051449892}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e8f6d3c6e4250e84192f5b34ce9e71bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

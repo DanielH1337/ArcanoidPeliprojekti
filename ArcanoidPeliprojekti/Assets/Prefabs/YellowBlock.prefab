@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 165358748333020263}
   - component: {fileID: 165358748333020261}
   - component: {fileID: -7589004894158800028}
+  - component: {fileID: 1341256494892165691}
   m_Layer: 0
   m_Name: YellowBlock
   m_TagString: Block
@@ -76,7 +77,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 49c71735d96b9b54d8d34891ba290d96, type: 3}
-  m_Color: {r: 0.92279345, g: 0.93333334, b: 0.10196078, a: 1}
+  m_Color: {r: 0.9887136, g: 1, b: 0.07075471, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -127,3 +128,22 @@ MonoBehaviour:
   explosion: {fileID: 5108086251381335303, guid: 193a97b8a898295448a9b7de44a7858a, type: 3}
   health: 1
   scoreValue: 10
+  spriteGlowEffect: {fileID: 1341256494892165691}
+--- !u!114 &1341256494892165691
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 165358748333020262}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e8f6d3c6e4250e84192f5b34ce9e71bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  glowColor: {r: 0.92156863, g: 0.93333334, b: 0.101960786, a: 1}
+  glowBrightness: 2.39
+  outlineWidth: 1
+  alphaThreshold: 0.506
+  drawOutside: 0
+  enableInstancing: 0

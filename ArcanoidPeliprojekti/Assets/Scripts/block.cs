@@ -2,16 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using SpriteGlow;
 
 public class block : MonoBehaviour
 {
     public ParticleSystem explosion;
     public int health = 1;
     public int scoreValue;
-    private Color orginalColor;
+    private Color32 orginalColor;
     public static bool loadblocks=false;
- 
-
+    [SerializeField]
+    SpriteGlowEffect spriteGlowEffect;
 
     void Awake()
     {
@@ -22,8 +23,9 @@ public class block : MonoBehaviour
         
     }
     private void Start()
-    {   
-        orginalColor = gameObject.GetComponent<Renderer>().material.color;
+    {
+        spriteGlowEffect = GetComponent<SpriteGlowEffect>();
+        orginalColor = spriteGlowEffect.GlowColor;
      
 
 
@@ -63,9 +65,9 @@ public class block : MonoBehaviour
     }
     IEnumerator ColorChanger()
     {
-        gameObject.GetComponent<Renderer>().material.color = new Color(0.5f,0.5f, 0.5f);
-        yield return new WaitForSeconds(0.1f);
-        gameObject.GetComponent<Renderer>().material.color = orginalColor;
+        spriteGlowEffect.GlowColor = new Color(0.5f,0.5f, 0.5f);
+        yield return new WaitForSeconds(0.2f);
+        spriteGlowEffect.GlowColor = orginalColor;
     }
     public void SetActiveFalse()
     {

@@ -70,7 +70,7 @@ public class GameSession : MonoBehaviour
         loadBool = (PlayerPrefs.GetInt("loadBool")!=0);
         Debug.Log(loadBool);
         
-       // UnPause();
+        UnPause();
         currentLives = startLives;
         
         restartButton.GetComponent<Button>().onClick.AddListener(Reset);
