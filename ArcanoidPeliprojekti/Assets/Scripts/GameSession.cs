@@ -11,6 +11,8 @@ using System.IO;
 
 public class GameSession : MonoBehaviour
 {
+    public AudioSource gameOverSound;
+    public AudioSource youWínSound;
 
     public  List<Vector3> blockPosList=new List<Vector3>();
     public static List<int> healthlist=new List<int>();
@@ -45,12 +47,16 @@ public class GameSession : MonoBehaviour
     private int currentHighScore;
     private float ballposY;
     bool uiCheck=false;
-
+    public bool switchedOn=true;
     public bool loadBool = false;
 
    // public static GameSession instance;
     private void Awake()
     {
+        
+        gameOverSound.GetComponent<AudioSource>();
+        youWínSound.GetComponent<AudioSource>();
+      
         foreach (block block in blocks)
         {
             Debug.Log(block);
@@ -154,7 +160,7 @@ public class GameSession : MonoBehaviour
         if (blocks.Length == 0)
         {
             //Do winning stuff
-
+            
             win();
         }
     }
@@ -178,9 +184,10 @@ public class GameSession : MonoBehaviour
             GameOver();
         }
     }
-
+    
     private void win()
     {
+        
         var numberOfScenes = SceneManager.sceneCountInBuildSettings;
         var currentBuildIndex = SceneManager.GetActiveScene().buildIndex;
         PlayerPrefs.SetInt("score", currentScore);
@@ -189,6 +196,14 @@ public class GameSession : MonoBehaviour
         if(currentBuildIndex == numberOfScenes -1)
         {
             //Declare winner
+           
+            if (switchedOn == true && youWínSound.isPlaying==false )
+            {
+               
+                youWínSound.Play();
+                
+
+            }
             blackScreen.SetActive(true);
             gameWinText.SetActive(true);
             restartButton.SetActive(true);
@@ -213,7 +228,8 @@ public class GameSession : MonoBehaviour
 
     private void GameOver()
     {
-
+        Debug.Log("musateST");
+        gameOverSound.Play();
         blackScreen.SetActive(true);
         gameOverText.SetActive(true);
         restartButton.SetActive(true);

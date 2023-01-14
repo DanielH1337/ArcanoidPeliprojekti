@@ -1023,6 +1023,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76d9f9f817a4abc48bc9adba5fa6b878, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameOverSound: {fileID: 0}
+  "youW\xEDnSound": {fileID: 0}
   blockPosList: []
   blockPrefabs:
   - {fileID: 0}
@@ -1053,6 +1055,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3382783949803201151}
     m_Modifications:
+    - target: {fileID: 54899323156057964, guid: 0cd47561710b07144b90ab3ab5e0edc4, type: 3}
+      propertyPath: m_Color.a
+      value: 0.59607846
+      objectReference: {fileID: 0}
     - target: {fileID: 2792535108941742959, guid: 0cd47561710b07144b90ab3ab5e0edc4, type: 3}
       propertyPath: m_RootOrder
       value: 12
@@ -1261,6 +1267,14 @@ PrefabInstance:
       propertyPath: m_sharedMaterial
       value: 
       objectReference: {fileID: 5797773194092723587, guid: 097434fc254c1a849bb5f02274e67581, type: 2}
+    - target: {fileID: 8225234158836928989, guid: 0cd47561710b07144b90ab3ab5e0edc4, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 88.4989
+      objectReference: {fileID: 0}
+    - target: {fileID: 8225234158836928989, guid: 0cd47561710b07144b90ab3ab5e0edc4, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 2.17
+      objectReference: {fileID: 0}
     - target: {fileID: 8225234158836928991, guid: 0cd47561710b07144b90ab3ab5e0edc4, type: 3}
       propertyPath: m_fontSize
       value: 30

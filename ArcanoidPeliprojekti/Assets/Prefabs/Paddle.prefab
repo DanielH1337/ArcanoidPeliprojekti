@@ -164,6 +164,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 30
   ballPrefab: {fileID: 6859004651230563654, guid: 12d53bc50b744ea4bba103b2d408dc3f, type: 3}
+  canJump: 1
 --- !u!82 &4453432675538488469
 AudioSource:
   m_ObjectHideFlags: 0
@@ -274,7 +275,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   audio: {fileID: 4453432675538488469}
   repeateble: 1
-  maxScale: {x: 700, y: 37, z: 0.8}
+  maxScale: {x: 1000, y: 37, z: 0.8}
   speed: 3
   duration: 1
   time: 3
@@ -285,6 +286,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4453432674376011207}
     m_Modifications:
+    - target: {fileID: 6821493461918654266, guid: 12d53bc50b744ea4bba103b2d408dc3f, type: 3}
+      propertyPath: maxScale.x
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 6821493461918654266, guid: 12d53bc50b744ea4bba103b2d408dc3f, type: 3}
+      propertyPath: maxScale.y
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 6859004651230563650, guid: 12d53bc50b744ea4bba103b2d408dc3f, type: 3}
       propertyPath: m_RootOrder
       value: 0

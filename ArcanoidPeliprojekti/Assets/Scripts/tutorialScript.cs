@@ -21,6 +21,9 @@ public class tutorialScript : MonoBehaviour
   
     void Start()
     {
+        buttonCheck =true;
+        escCheck =true;
+        launchCheck=true;
 
         paddle.GetComponent<PlayerController>().canJump = false;
         tutorialPanel.SetActive(true);
