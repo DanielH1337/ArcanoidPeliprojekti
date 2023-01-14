@@ -11,6 +11,7 @@ public class PlayerController : MonoBehaviour
     CustomBounce customBounce;
     Vector3 balloffset;
     Vector3 random;
+    public bool canJump = true;
  
     private void Awake()
     {
@@ -29,15 +30,22 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        rb2D.velocity = new Vector2(Input.GetAxis("Horizontal")*speed, 0);
-
-        if(transform.childCount > 0 && Input.GetButtonDown("Jump"))
+     
+        
+        rb2D.velocity = new Vector2(Input.GetAxis("Horizontal") * speed, 0);
+        if (canJump == true)
         {
-            ball ball = GetComponentInChildren<ball>();
+            if (transform.childCount > 0 && Input.GetButtonDown("Jump"))
+            {
+                ball ball = GetComponentInChildren<ball>();
 
-            float relativePosition= customBounce.GetRelativePosition(ball.transform);
-            ball.Launch(new Vector2(relativePosition,1));
+                float relativePosition = customBounce.GetRelativePosition(ball.transform);
+                ball.Launch(new Vector2(relativePosition, 1));
+            }
         }
+        
+        
+        
     }
     public void AutoLaunch()
     {

@@ -7,7 +7,7 @@ using System;
 using UnityEngine.SceneManagement;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.IO;
-using System;
+
 
 public class GameSession : MonoBehaviour
 {
@@ -70,7 +70,7 @@ public class GameSession : MonoBehaviour
         loadBool = (PlayerPrefs.GetInt("loadBool")!=0);
         Debug.Log(loadBool);
         
-        UnPause();
+       // UnPause();
         currentLives = startLives;
         
         restartButton.GetComponent<Button>().onClick.AddListener(Reset);
@@ -142,7 +142,7 @@ public class GameSession : MonoBehaviour
         {
             DecreaseLives();
             GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>().ResetBall();
-            ball = GameObject.FindGameObjectWithTag("Ball");
+           // ball = GameObject.FindGameObjectWithTag("Ball");
 
         }
     }

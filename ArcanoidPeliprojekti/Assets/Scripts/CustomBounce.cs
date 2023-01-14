@@ -13,7 +13,6 @@ public class CustomBounce : MonoBehaviour
 
     }
 
-
     private void OnCollisionEnter2D(Collision2D collision)
     {
         //Find the relative point. (Ball.x - Paddle.x) / Paddle.widht
@@ -25,7 +24,6 @@ public class CustomBounce : MonoBehaviour
             //Change the velocity of the ball depending on the relative point.
             collision.rigidbody.velocity = new Vector2(relativePosition, 1).normalized * collision.rigidbody.velocity.magnitude;
         }
-
     }
 
     public float GetRelativePosition(Transform collision)

@@ -14,6 +14,7 @@ public class ScaleLerper : MonoBehaviour
 
     public void StartFunction()
     {
+       
         repeateble = true;
         StartCoroutine(StartLerp());
     }

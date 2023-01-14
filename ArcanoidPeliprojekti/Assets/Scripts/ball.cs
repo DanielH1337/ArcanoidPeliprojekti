@@ -6,6 +6,7 @@ public class ball : MonoBehaviour
 {
     [SerializeField] float speed = 15f;
     [SerializeField] float accelaration = 1.0f;
+    public int numberOfBallPowerup=3;
  
     private float  tempSpeed = 0.0f;
 
@@ -75,7 +76,7 @@ public class ball : MonoBehaviour
         }
         IEnumerator launchAuto()
         {
-            for (int x = 0; x < 3; x++)
+            for (int x = 0; x < numberOfBallPowerup; x++)
             {
                 FindObjectOfType<PlayerController>().ResetBall();
                 FindObjectOfType<PlayerController>().AutoLaunch();
