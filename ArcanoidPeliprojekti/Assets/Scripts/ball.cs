@@ -61,7 +61,7 @@ public class ball : MonoBehaviour
         {
             audiosource.Play();
         }
-        if (collision.gameObject.name == "powerUpScale")
+        if (collision.gameObject.layer == 7)
         {
             if (blocks.Length > 1)
             {
@@ -70,7 +70,7 @@ public class ball : MonoBehaviour
             }
             
         }
-        if(collision.gameObject.name == "powerUpBalls")
+        if(collision.gameObject.layer ==8)
         {
             StartCoroutine(launchAuto());
         }
@@ -83,7 +83,7 @@ public class ball : MonoBehaviour
                 yield return new WaitForSeconds(0.5f);
             }
         }
-        if(collision.gameObject.name == "powerUpBallScale")
+        if(collision.gameObject.layer ==9)
         {
             if(blocks.Length > 1)
             {

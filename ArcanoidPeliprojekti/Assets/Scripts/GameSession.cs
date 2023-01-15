@@ -115,6 +115,10 @@ public class GameSession : MonoBehaviour
         }
 
     }
+    public void ExitGame()
+    {
+        Application.Quit();
+    }
     public void setSaveButtonInactive()
     {
         SaveButton.interactable = false;
@@ -228,7 +232,7 @@ public class GameSession : MonoBehaviour
 
     private void GameOver()
     {
-        Debug.Log("musateST");
+       
         gameOverSound.Play();
         blackScreen.SetActive(true);
         gameOverText.SetActive(true);

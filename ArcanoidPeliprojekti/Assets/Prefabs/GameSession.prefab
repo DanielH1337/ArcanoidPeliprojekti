@@ -282,7 +282,7 @@ GameObject:
   - component: {fileID: 1323918051}
   - component: {fileID: 1323918050}
   m_Layer: 5
-  m_Name: LoadLevel
+  m_Name: ExitGame
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -393,19 +393,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 8136346115767561729}
         m_TargetAssemblyTypeName: GameSession, Assembly-CSharp
-        m_MethodName: Load
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 8136346115767561729}
-        m_TargetAssemblyTypeName: GameSession, Assembly-CSharp
-        m_MethodName: loadButtonContinue
+        m_MethodName: ExitGame
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -427,7 +415,7 @@ GameObject:
   - component: {fileID: 1330073366}
   - component: {fileID: 1330073365}
   m_Layer: 5
-  m_Name: SaveText
+  m_Name: ExitText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -481,7 +469,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Load
+  m_text: Exit
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 097434fc254c1a849bb5f02274e67581, type: 2}
   m_sharedMaterial: {fileID: 5797773194092723587, guid: 097434fc254c1a849bb5f02274e67581, type: 2}
@@ -1037,7 +1025,7 @@ MonoBehaviour:
   livesText: {fileID: 3699023097860664956}
   scoreText: {fileID: 3699023098463353950}
   highScoreText: {fileID: 3699023096775470604}
-  startLives: 4
+  startLives: 6
   blackScreen: {fileID: 4734265824220608502}
   gameOverText: {fileID: 3699023097999059266}
   gameWinText: {fileID: 2857628348984318252}
@@ -1047,6 +1035,7 @@ MonoBehaviour:
   ball: {fileID: 0}
   pausePanel: {fileID: 7471864210764807158}
   transitionTime: 1
+  switchedOn: 0
   loadBool: 0
 --- !u!1001 &4715399701867837592
 PrefabInstance:
@@ -1058,6 +1047,10 @@ PrefabInstance:
     - target: {fileID: 54899323156057964, guid: 0cd47561710b07144b90ab3ab5e0edc4, type: 3}
       propertyPath: m_Color.a
       value: 0.59607846
+      objectReference: {fileID: 0}
+    - target: {fileID: 101689660734157250, guid: 0cd47561710b07144b90ab3ab5e0edc4, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2792535108941742959, guid: 0cd47561710b07144b90ab3ab5e0edc4, type: 3}
       propertyPath: m_RootOrder
