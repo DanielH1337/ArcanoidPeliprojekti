@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.IO;
 
 public class tutorialScript : MonoBehaviour
 {
@@ -10,7 +11,9 @@ public class tutorialScript : MonoBehaviour
     public GameObject wasdTutorial;
     public GameObject launchBallTutorial;
     public GameObject paddle;
-
+    public AudioSource startSound;
+ 
+    
     private int index =0;
 
     private bool buttonCheck =true;
@@ -24,13 +27,23 @@ public class tutorialScript : MonoBehaviour
         buttonCheck =true;
         escCheck =true;
         launchCheck=true;
-
-        paddle.GetComponent<PlayerController>().canJump = false;
-        tutorialPanel.SetActive(true);
-        EscTutorial.SetActive(true);
-        wasdTutorial.SetActive(false);
-        launchBallTutorial.SetActive(false);
-        pauseGame();
+        if(File.Exists(Application.persistentDataPath + "/Info"))
+        {
+            tutorialPanel.SetActive(false);
+            gameObject.GetComponent<tutorialScript>().enabled = false;
+            
+        }
+        else
+        {
+            startSound.Play();
+            paddle.GetComponent<PlayerController>().canJump = false;
+            tutorialPanel.SetActive(true);
+            EscTutorial.SetActive(true);
+            wasdTutorial.SetActive(false);
+            launchBallTutorial.SetActive(false);
+            pauseGame();
+        }
+       
         
   
     }

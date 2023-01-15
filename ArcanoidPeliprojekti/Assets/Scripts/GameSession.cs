@@ -32,13 +32,12 @@ public class GameSession : MonoBehaviour
     [SerializeField] GameObject gameOverText;
     [SerializeField] GameObject gameWinText;
     [SerializeField] GameObject restartButton;
-
+    [SerializeField] GameObject newHighScoreText;
 
     public Button SaveButton;
     public GameObject player;
     public GameObject ball;
 
- 
     public GameObject pausePanel;
 
     public float transitionTime=1f;
@@ -65,7 +64,7 @@ public class GameSession : MonoBehaviour
     }
     void Start()
     {
-        
+        newHighScoreText.SetActive(false);
         Debug.Log(loadBool);
         if(SceneManager.GetActiveScene().buildIndex != 1)
         {
@@ -206,7 +205,6 @@ public class GameSession : MonoBehaviour
                
                 youWínSound.Play();
                 
-
             }
             blackScreen.SetActive(true);
             gameWinText.SetActive(true);
@@ -273,6 +271,7 @@ public class GameSession : MonoBehaviour
     {
         if (currentScore > currentHighScore)
         {
+            newHighScoreText.SetActive(true);
             currentHighScore = currentScore;
             PlayerPrefs.SetInt("highscore",currentHighScore);
         }
@@ -369,7 +368,7 @@ public class GameSession : MonoBehaviour
     
     public void Save()
     {
-        
+        ball = GameObject.FindGameObjectWithTag("Ball");
         BinaryFormatter bf = new BinaryFormatter();
         FileStream file = File.Create(Application.persistentDataPath + "/Info");
         PlayerData data = new PlayerData();
